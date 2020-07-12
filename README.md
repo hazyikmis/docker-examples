@@ -62,8 +62,3 @@ In order to connect the container and execute some commands inside the docker
 
 # Check the COMMENTS inside the file:
 ![/nodejs-app/Dockerfile](./nodejs-app/Dockerfile)
-
-
-![Building_a_dockerfile](00-building a dockerfile.JPG)
-![Creating_a_dockerfile](00-creating a dockerfile.JPG)
-![dockerfile](01-dockerfile.JPG)
