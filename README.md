@@ -1,4 +1,4 @@
-87
+# Some basic commands
 
 - docker create hello-world
 - docker start -a 55464656
@@ -24,7 +24,9 @@
 - docker system prune
 
 - docker build .
+
 (after the image created)
+
 - docker run a2d2b488a16c
 
 When building new images, its better to tag in order not to
@@ -57,3 +59,11 @@ In order to connect the container and execute some commands inside the docker
 (But this creates another container from the same image. In order to connect exact same container:)
 
 > docker exec -it <containerId> sh
+
+# Check the COMMENTS inside the file:
+![/nodejs-app/Dockerfile](./nodejs-app/Dockerfile)
+
+
+![Building_a_dockerfile](00-building a dockerfile.JPG)
+![Creating_a_dockerfile](00-creating a dockerfile.JPG)
+![dockerfile](01-dockerfile.JPG)
