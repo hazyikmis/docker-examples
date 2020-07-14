@@ -1,3 +1,4 @@
+## DOCKER
 # Some basic commands
 
 - docker create hello-world
@@ -62,3 +63,10 @@ In order to connect the container and execute some commands inside the docker
 
 # Check the COMMENTS inside the file:
 ![/nodejs-app/Dockerfile](./nodejs-app/Dockerfile)
+
+
+## KUBERNETES (k8s)
+
+> kubectl apply -f posts.yaml
+> kubectl get pods
+> 
