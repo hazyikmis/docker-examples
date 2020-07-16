@@ -35,6 +35,8 @@ use always IDs:
 - docker build -t hazyikmis/nodesimpleapp .
 
 - docker build -t hazyikmis/redis:latest .
+- docker build -t hazyikmis/posts:0.0.1 .
+- docker build -t hazyikmis/posts .
 
 # Creating new image from a running container
 1. first, run an image with a shell (to install something...)
@@ -65,8 +67,52 @@ In order to connect the container and execute some commands inside the docker
 ![/nodejs-app/Dockerfile](./nodejs-app/Dockerfile)
 
 
-## KUBERNETES (k8s)
+## KUBERNETES (K8s)
 
+(For K8s example pod & deployment file examples check the 01-blog-app/infra/k8s/posts.yaml & posts-depl.yaml)
+
+- To process a K8s config file, (meaning to run pods/containers):
 > kubectl apply -f posts.yaml
 > kubectl get pods
+
+- Running a command in the containers of the pods,
+- If you have more than one containers in pods then, it will be asked to run this command in which container.
+> kubectl exec -it posts sh
+> kubectl logs posts
+
+- Very important, to see all config options & all events on the pod:
+> kubectl describe pod posts
+
+> kubectl apply -f posts-depl.yaml
+> kubectl get deployments
+
+- If you delete a pod, defined inside a deployment, another pod automatically created instantly
+> kubectl delete pod posts-depl-74ddc57b7c-pcbh2
+> kubectl get pods
+
+> kubectl describe deployment posts-depl
+
+> kubectl delete deployment posts-depl
+
+- Pushing up your images to docker hub
+> docker login -u hazyikmis
+> docker push hazyikmis/posts
+
+- To process a K8s config file, (meaning to run pods/containers - pulling the latest version from docker hub):
+> kubectl rollout restart deployment posts-depl
+
+# NodePort service: Makes a pod accessible from outside the cluster
+Usually only used for dev purposes.
+- Check the the file posts-srv.yaml
+
+> kubectl apply -f posts-srv.yaml
+
+- To list all running services
+> kubectl get services
+
+- To see all config options (especially port numbers) about a service:
+> kubectl describe service posts-srv
+
+- Randomly assigned "NodePort" info of the NodePort service shows that how we can access the app (which port we should use? Lets assume that NodePort is 32211 assigned)
+> http://localhost:32211/posts
 > 
