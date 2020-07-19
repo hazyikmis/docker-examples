@@ -251,3 +251,18 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 
 - First install choco: https://chocolatey.org/
 - Then install skaffold: https://skaffold.dev/
+- check the skaffold is properly installed, type skaffold on the shell
+
+- Now, its time to write another config file for skaffold, under the root of blog-app
+- skaffold.yaml
+  
+> skaffold dev
+- At first run, a tons of errors/warnings, thats ok, run it again
+- Then, from that moment, its very easy to change anything in one of your apps
+- skaffold automatically pushes this change to the related pod/container
+- and this is beautiful. Another beautiful thing is, if you CTRL+C and kill the skaffold
+- then all services, deployments and pods gone, super/hiper !!!
+- NOTE: after CTRL+C, check with
+> kubectl get deployments/services/posts
+- If all still stands then;
+> skaffold  delete
